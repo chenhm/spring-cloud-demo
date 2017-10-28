@@ -16,6 +16,11 @@ gstafford@nagstaffo:~$ docker exec -it dockerredis_redis_1 /bin/bash
 root@fe0396908e29:/data# redis-cli
 127.0.0.1:6379> monitor
 
+docker run -it --rm redis /usr/local/bin/redis-cli -h 192.168.99.100
+
+
+docker run --net=host --rm -d -h my-rabbit rabbitmq:management-alpine
+http://192.168.99.100:15672/ guest/guest
 
 SCRIPT NODATA;
 SELECT * FROM RESERVATION;

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.stream.annotation.Output;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Description;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.hateoas.Resources;
@@ -33,8 +34,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 class ReservationApiGatewayRestController {
 
     @Autowired
-    @LoadBalanced
-    private RestTemplate restTemplate;
+    RestTemplate restTemplate;
 
     @Autowired
     @Output(OUTPUT)

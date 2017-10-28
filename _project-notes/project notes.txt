@@ -35,6 +35,8 @@ docker-zipkin
 config-server
 eureka-service
 hystrix-dashboard
+h2 database
+reservation-data-seeder (init db)
 reservation-service
 reservation-client
 
