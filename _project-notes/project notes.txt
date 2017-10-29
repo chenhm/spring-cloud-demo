@@ -30,8 +30,8 @@ Zipkin:                http://192.168.99.100:8080/
 
 Start-up Order
 =======================
-docker-redis
-docker-zipkin
+docker-rabbitmq
+zipkin
 config-server
 eureka-service
 hystrix-dashboard

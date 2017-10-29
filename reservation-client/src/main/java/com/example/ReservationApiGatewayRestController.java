@@ -4,10 +4,8 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.stream.annotation.Output;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Description;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.hateoas.Resources;
@@ -91,5 +89,15 @@ class ReservationApiGatewayRestController {
         return this.restTemplate.getForObject(
                 "http://reservation-service/message",
                 String.class);
+    }
+
+    @Autowired
+    NamesFeignClient client;
+
+    @RequestMapping(path = "/names2", method = RequestMethod.GET)
+    public Collection<String> getReservationNamesNew() {
+        return client.reservations().getContent().stream()
+                .map(Reservation::getReservationName)
+                .collect(toList());
     }
 }
